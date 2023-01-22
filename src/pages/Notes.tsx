@@ -1,5 +1,3 @@
-import { useContext, useEffect, useState } from "react";
-import secureLocalStorage from "react-secure-storage";
 import {
     IonContent,
     IonHeader,
@@ -9,51 +7,53 @@ import {
     IonTitle,
     IonToolbar,
 } from "@ionic/react";
-import { PasswordsContext } from "../context/passwords.context";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-import "./Home.css";
-import SearchBar from "../components/SearchBar";
-import SortBy from "../components/SortBy";
-import List from "../components/List";
+import secureLocalStorage from "react-secure-storage";
 import Fab from "../components/Fab";
 import Footer from "../components/Footer";
+import List from "../components/List";
+import SearchBar from "../components/SearchBar";
+import SortBy from "../components/SortBy";
+import { NotesContext } from "../context/notes.context";
 
-const Home: React.FC = () => {
+import "./Notes.css";
+
+const Notes: React.FC = () => {
     const { t } = useTranslation();
-    const { passwordsArray, setPasswordsArray } = useContext(PasswordsContext); // Enable and destructure PasswordsContext for useage
+    const { notesArray, setNotesArray } = useContext(NotesContext); // Enable and destructure NotesContext for useage
 
     // secureLocalStorage.setItem(key, value)	To set values to secure storage	Supports 'String - Object - Number - Boolean' as value
     // secureLocalStorage.getItem(key)	To get values which is saved on secure local storage	Return null if the key does not exits
     // secureLocalStorage.removeItem(key)	To remove specified key from secure local storage
     // secureLocalStorage.clear()	Removed all data from secure local storage
 
-    const [search, setSearch] = useState<string>(""); // set searchable string to state used by IonSearchbar to filter passwordsArray
-    const [sortOrder, setSortOrder] = useState<string>("asc"); // set sort order to state used to sort passwordsArray asc or desc
-    const [sortBy, setSortBy] = useState<string>("date"); // set sort by to state used by IonSelect to sort passwordsArray
+    const [search, setSearch] = useState<string>(""); // set searchable string to state used by IonSearchbar to filter notesArray
+    const [sortOrder, setSortOrder] = useState<string>("asc"); // set sort order to state used to sort notesArray asc or desc
+    const [sortBy, setSortBy] = useState<string>("date"); // set sort by to state used by IonSelect to sort notesArray
 
     useEffect(() => {
         // pull data from secure storage and set to context
         // secureLocalStorage.clear(); // clear secure storage
 
-        const getPasswordsFromStorage: any =
-            secureLocalStorage.getItem("passwordArray"); // pull data from storage
-        if (getPasswordsFromStorage) {
-            setPasswordsArray(getPasswordsFromStorage); // set to PasswordsContext
+        const getNotesFromStorage: any =
+            secureLocalStorage.getItem("noteArray"); // pull data from storage
+        if (getNotesFromStorage) {
+            setNotesArray(getNotesFromStorage); // set to NotesContext
         }
-    }, [setPasswordsArray]);
+    }, [setNotesArray]);
 
     return (
-        <IonPage id="home-page">
+        <IonPage>
             <IonHeader mode="ios">
                 <IonToolbar mode="ios">
-                    <IonTitle>{t("PASSWORD_TITLE")}</IonTitle>
+                    <IonTitle>{t("NOTES_TITLE")}</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 <IonHeader mode="ios" collapse="condense">
                     <IonToolbar mode="ios">
-                        <IonTitle size="large">{t("PASSWORD_TITLE")}</IonTitle>
+                        <IonTitle size="large">{t("NOTES_TITLE")}</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <SearchBar search={search} setSearch={setSearch} />
@@ -67,19 +67,19 @@ const Home: React.FC = () => {
                             setSortOrder={setSortOrder}
                         />
                         <List
-                            array={passwordsArray}
-                            type="password"
+                            array={notesArray}
+                            type="note"
                             sortBy={sortBy}
                             sortOrder={sortOrder}
                             search={search}
                         />
                     </IonItemGroup>
                 </IonList>
-                <Fab link={"/newitem"} />
+                <Fab link={"/newnote"} />
             </IonContent>
             <Footer />
         </IonPage>
     );
 };
 
-export default Home;
+export default Notes;

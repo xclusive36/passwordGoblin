@@ -3,28 +3,38 @@ lockfileVersion: 5.4
 specifiers:
   '@capacitor/app': 4.1.1
   '@capacitor/cli': 4.6.1
+  '@capacitor/clipboard': ^4.1.0
   '@capacitor/core': 4.6.1
+  '@capacitor/device': ^4.1.0
   '@capacitor/haptics': 4.1.0
   '@capacitor/keyboard': 4.1.0
   '@capacitor/status-bar': 4.1.1
+  '@ionic/core': ^6.4.1
   '@ionic/react': ^6.0.0
   '@ionic/react-router': ^6.0.0
   '@testing-library/jest-dom': ^5.11.9
   '@testing-library/react': ^13.3.0
   '@testing-library/user-event': ^12.6.3
+  '@types/dompurify': ^2.4.0
   '@types/jest': ^26.0.20
   '@types/node': ^12.19.15
+  '@types/omgopass': ^3.2.1
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@types/react-router': ^5.1.11
   '@types/react-router-dom': ^5.1.7
+  dompurify: ^2.4.3
   history: ^4.9.0
+  i18next: ^22.4.9
   ionicons: ^6.0.3
+  omgopass: ^3.2.1
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-i18next: ^12.1.4
   react-router: ^5.2.0
   react-router-dom: ^5.2.0
   react-scripts: ^5.0.0
+  react-secure-storage: ^1.0.21
   typescript: ^4.1.3
   web-vitals: ^0.2.4
   workbox-background-sync: ^5.1.4
@@ -42,10 +52,13 @@ specifiers:
 
 dependencies:
   '@capacitor/app': 4.1.1_@capacitor+core@4.6.1
+  '@capacitor/clipboard': 4.1.0_@capacitor+core@4.6.1
   '@capacitor/core': 4.6.1
+  '@capacitor/device': 4.1.0_@capacitor+core@4.6.1
   '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.1
   '@capacitor/keyboard': 4.1.0_@capacitor+core@4.6.1
   '@capacitor/status-bar': 4.1.1_@capacitor+core@4.6.1
+  '@ionic/core': 6.4.1
   '@ionic/react': 6.4.1_biqbaboplfbrettd7655fr4n2y
   '@ionic/react-router': 6.4.1_lrmp3soklbeidbetlzp5p4lxwi
   '@testing-library/jest-dom': 5.16.5
@@ -57,13 +70,18 @@ dependencies:
   '@types/react-dom': 18.0.10
   '@types/react-router': 5.1.20
   '@types/react-router-dom': 5.3.3
+  dompurify: 2.4.3
   history: 4.10.1
+  i18next: 22.4.9
   ionicons: 6.0.4
+  omgopass: 3.2.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-i18next: 12.1.4_iakk3dtjhjpukdoa4oua5khgci
   react-router: 5.3.4_react@18.2.0
   react-router-dom: 5.3.4_react@18.2.0
   react-scripts: 5.0.1_o77wnou4wwnegu5woljtklrzru
+  react-secure-storage: 1.0.21
   typescript: 4.9.4
   web-vitals: 0.2.4
   workbox-background-sync: 5.1.4
@@ -81,6 +99,8 @@ dependencies:
 
 devDependencies:
   '@capacitor/cli': 4.6.1
+  '@types/dompurify': 2.4.0
+  '@types/omgopass': 3.2.1
 
 packages:
 
@@ -1508,10 +1528,26 @@ packages:
       - supports-color
     dev: true
 
+  /@capacitor/clipboard/4.1.0_@capacitor+core@4.6.1:
+    resolution: {integrity: sha512-lfUwDqZces3mQcBOyfxpBCsRWWSfLuPzekA1N3RaMgYVhD6/rdzFnzfRiksj1hm4It+lnULK0y+N5nxVnTt+0Q==}
+    peerDependencies:
+      '@capacitor/core': ^4.0.0
+    dependencies:
+      '@capacitor/core': 4.6.1
+    dev: false
+
   /@capacitor/core/4.6.1:
     resolution: {integrity: sha512-7A2IV9E8umgu9u0fChUTjQJq+Jp25GJZMmWxoQN/nVx/1rcpFJ4m1xo3NPBoIRs+aV7FR+BM17mPrnkKlA8N2g==}
     dependencies:
       tslib: 2.4.1
+    dev: false
+
+  /@capacitor/device/4.1.0_@capacitor+core@4.6.1:
+    resolution: {integrity: sha512-BlcYb6e6m+vC1SxeyUDIUGfuNXdKEcpFPDCs/kxk2SByFc/BkvXeoy4NjY4qmTderGELofX9bta5Iy9JV7rGUg==}
+    peerDependencies:
+      '@capacitor/core': ^4.0.0
+    dependencies:
+      '@capacitor/core': 4.6.1
     dev: false
 
   /@capacitor/haptics/4.1.0_@capacitor+core@4.6.1:
@@ -2565,6 +2601,12 @@ packages:
       '@types/node': 12.20.55
     dev: false
 
+  /@types/dompurify/2.4.0:
+    resolution: {integrity: sha512-IDBwO5IZhrKvHFUl+clZxgf3hn2b/lU6H1KaBShPkQyGJUQ0xwebezIPSuiyGwfz1UzJWQl4M7BDxtHtCCPlTg==}
+    dependencies:
+      '@types/trusted-types': 2.0.2
+    dev: true
+
   /@types/eslint-scope/3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
@@ -2672,6 +2714,10 @@ packages:
   /@types/node/12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
+  /@types/omgopass/3.2.1:
+    resolution: {integrity: sha512-5CMq8TogOSK8mY6ta3KmCRSFSqrn2XzurSp9DahtAZb6ijWAXPh/SizVN3MGlJBaVDA8x5eTzPWc7Fx4XPQ1/w==}
+    dev: true
+
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: false
@@ -2778,7 +2824,6 @@ packages:
 
   /@types/trusted-types/2.0.2:
     resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
-    dev: false
 
   /@types/ws/8.5.4:
     resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
@@ -4030,6 +4075,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
 
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: false
+
   /crypto-random-string/2.0.0:
     resolution: {integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==}
     engines: {node: '>=8'}
@@ -4520,6 +4569,10 @@ packages:
     engines: {node: '>= 4'}
     dependencies:
       domelementtype: 2.3.0
+    dev: false
+
+  /dompurify/2.4.3:
+    resolution: {integrity: sha512-q6QaLcakcRjebxjg8/+NP+h0rPfatOgOzc46Fst9VAA3jF2ApfKBNKMzdP4DYTqtUMXSCd5pRS/8Po/OmoCHZQ==}
     dev: false
 
   /domutils/1.7.0:
@@ -5690,6 +5743,12 @@ packages:
       terser: 5.16.1
     dev: false
 
+  /html-parse-stringify/3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+    dependencies:
+      void-elements: 3.1.0
+    dev: false
+
   /html-webpack-plugin/5.5.0_webpack@5.75.0:
     resolution: {integrity: sha512-sy88PC2cRTVxvETRgUHFrL4No3UxvcH8G1NepGhqaTT+GXN2kTamqasot0inS5hXeg1cMbFDt27zzo9p35lZVw==}
     engines: {node: '>=10.13.0'}
@@ -5796,6 +5855,12 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+    dev: false
+
+  /i18next/22.4.9:
+    resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
+    dependencies:
+      '@babel/runtime': 7.20.7
     dev: false
 
   /iconv-lite/0.4.24:
@@ -7214,6 +7279,10 @@ packages:
       thunky: 1.1.0
     dev: false
 
+  /murmurhash-js/1.0.0:
+    resolution: {integrity: sha512-TvmkNhkv8yct0SVBSy+o8wYzXjE4Zz3PCesbfs8HiCXXdcTuocApFv11UWlNFWKYsP2okqrhb7JNlSm9InBhIw==}
+    dev: false
+
   /nanoid/3.3.4:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -7398,6 +7467,10 @@ packages:
 
   /obuf/1.1.2:
     resolution: {integrity: sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==}
+    dev: false
+
+  /omgopass/3.2.1:
+    resolution: {integrity: sha512-Q0QqwwL3ag1Pyjhx6vfieaz73pHNLa3v59qhRcTCUINmJOwdcLu0kNKncBSF2ylnzrqmZw9VRgOEdAwvCSxffA==}
     dev: false
 
   /on-finished/2.4.1:
@@ -8624,6 +8697,26 @@ packages:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
     dev: false
 
+  /react-i18next/12.1.4_iakk3dtjhjpukdoa4oua5khgci:
+    resolution: {integrity: sha512-XQND7jYtgM7ht5PH3yIZljCRpAMTlH/zmngM9ZjToqa+0BR6xuu8c7QF0WIIOEjcMTB2S3iOfpN/xG/ZrAnO6g==}
+    peerDependencies:
+      i18next: '>= 19.0.0'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.20.7
+      html-parse-stringify: 3.0.1
+      i18next: 22.4.9
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -8767,6 +8860,13 @@ packages:
       - webpack-cli
       - webpack-hot-middleware
       - webpack-plugin-serve
+    dev: false
+
+  /react-secure-storage/1.0.21:
+    resolution: {integrity: sha512-9FDGfU8cz6RefutG4gzY9YCcUmTSiJMy8LReTM195ydXDtKhVUk+A1wy+STIpxs7ts3gnA9ghxyz1gSVPmZ6IA==}
+    dependencies:
+      crypto-js: 4.1.1
+      murmurhash-js: 1.0.0
     dev: false
 
   /react/18.2.0:
@@ -10014,6 +10114,11 @@ packages:
   /vary/1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /void-elements/3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
     dev: false
 
   /w3c-hr-time/1.0.2:
